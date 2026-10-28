@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather Intelligence Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="weatherBackground" class="weather-background">
+
+    <div class="sun"></div>
+
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
+    <div class="mountains"></div>
+    <div class="grass"></div>
+    <div class="rain"></div>
+    <div class="snow"></div>
+
+    <div class="person">
+
+    <div class="person-head"></div>
+    <div class="person-cap"></div>
+
+    <div class="person-neck"></div>
+
+    <div class="person-shirt"></div>
+
+    <div class="person-arm person-arm-back"></div>
+    <div class="person-arm person-arm-front"></div>
+
+    <div class="person-shorts"></div>
+
+    <div class="person-leg person-leg-left"></div>
+    <div class="person-leg person-leg-right"></div>
+
+    <div class="person-shoe person-shoe-left"></div>
+    <div class="person-shoe person-shoe-right"></div>
+
+</div>
+
+</div>
+
+    <div class="container">
+
+        <h1>🌦️ Weather Intelligence</h1>
+
+        <p class="subtitle">
+            Know the weather before you step out
+        </p>
+
+        <!-- Search -->
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Enter city name"
+            >
+
+            <button id="searchButton" onclick="getWeather()">
+                🔍 Search
+            </button>
+
+            <button id="locationButton" onclick="getMyLocation()">
+                📍 My Location
+            </button>
+
+        </div>
+
+        <!-- Weather Result -->
+        <div id="weather">
+
+            <h2 id="cityName">Search for a city</h2>
+
+            <div id="defaultCloud">☁</div>
+
+            <img id="weatherIcon" src="" alt="Weather">
+
+            <h3 id="temperature"></h3>
+
+            <p id="condition"></p>
+
+            <!-- Smart Message -->
+            <div class="smart-message">
+                <h3>💡 Weather Advice</h3>
+                <p id="advice">
+                    Enter a city to get weather advice.
+                </p>
+            </div>
+
+            <!-- Weather Information -->
+            <div class="weather-info">
+
+                <div class="info-card">
+                    <span>🌧️</span>
+                    <p>Rain Chance</p>
+                    <strong id="rainChance">--</strong>
+                </div>
+
+                <div class="info-card">
+                    <span>🔥</span>
+                    <p>Max Temperature</p>
+                    <strong id="maxTemp">--</strong>
+                </div>
+
+                <div class="info-card">
+                    <span>💧</span>
+                    <p>Humidity</p>
+                    <strong id="humidity">--</strong>
+                </div>
+
+                <div class="info-card">
+                    <span>💨</span>
+                    <p>Wind</p>
+                    <strong id="wind">--</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

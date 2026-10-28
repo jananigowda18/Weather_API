@@ -1,0 +1,1020 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   MAIN BACKGROUND
+========================= */
+
+body {
+    min-height: 100vh;
+    padding: 35px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at 15% 15%,
+            rgba(255,255,255,0.45) 0,
+            rgba(255,255,255,0) 22%),
+
+        radial-gradient(circle at 85% 25%,
+            rgba(255,255,255,0.35) 0,
+            rgba(255,255,255,0) 20%),
+
+        linear-gradient(
+            180deg,
+            #75cfee 0%,
+            #63bce4 35%,
+            #55a9d7 65%,
+            #6fc2cf 100%
+        );
+
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   CLOUD EFFECTS
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+
+    width: 350px;
+    height: 150px;
+
+    top: 30px;
+    left: -80px;
+
+    background:
+        radial-gradient(
+            circle at 30% 60%,
+            rgba(255,255,255,0.65) 0 25%,
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255,255,255,0.55) 0 30%,
+            transparent 31%
+        ),
+        radial-gradient(
+            circle at 70% 60%,
+            rgba(255,255,255,0.5) 0 24%,
+            transparent 25%
+        );
+
+    filter: blur(8px);
+    pointer-events: none;
+}
+
+
+/* =========================
+   DISTANT MOUNTAIN EFFECT
+========================= */
+
+body::after {
+    content: "";
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 230px;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 0 20%,
+            rgba(70,145,180,0.55) 21% 35%,
+            transparent 36%
+        ),
+
+        linear-gradient(
+            225deg,
+            transparent 0 25%,
+            rgba(63,137,175,0.5) 26% 42%,
+            transparent 43%
+        ),
+
+        linear-gradient(
+            180deg,
+            transparent 0 35%,
+            rgba(53,128,165,0.5) 36% 100%
+        );
+
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    width: 950px;
+    max-width: 100%;
+
+    padding: 38px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.20);
+
+    border: 1px solid rgba(255,255,255,0.45);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 70, 120, 0.20),
+        inset 0 1px 1px rgba(255,255,255,0.4);
+
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+h1 {
+    font-size: 38px;
+    color: white;
+
+    margin-bottom: 8px;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,0.15);
+}
+
+.subtitle {
+    color: rgba(255,255,255,0.9);
+
+    font-size: 17px;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================
+   SEARCH AREA
+========================= */
+
+.search-box {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 35px;
+}
+
+.search-box input {
+    width: 430px;
+
+    padding: 15px 18px;
+
+    border: 1px solid rgba(255,255,255,0.6);
+
+    border-radius: 14px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    background: rgba(255,255,255,0.82);
+
+    color: #333;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.08);
+}
+
+.search-box input::placeholder {
+    color: #777;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.search-box button {
+    padding: 14px 23px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: rgba(55, 137, 220, 0.90);
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    min-width: 125px;
+
+    box-shadow:
+        0 6px 15px rgba(0,80,150,0.20);
+
+    transition: 0.25s;
+}
+
+.search-box button:hover {
+    transform: translateY(-2px);
+
+    background: rgba(40,120,205,0.95);
+}
+
+.search-box button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================
+   CITY
+========================= */
+
+#cityName {
+    font-size: 30px;
+
+    color: white;
+
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 2px 7px rgba(0,0,0,0.15);
+}
+
+
+/* =========================
+   WEATHER ICON
+========================= */
+
+
+
+#defaultCloud {
+    font-size: 75px;
+    color: white;
+    margin: 15px 0;
+    text-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+#weatherIcon {
+    width: 90px;
+    display: none;
+}
+
+/* =========================
+   TEMPERATURE
+========================= */
+
+#temperature {
+    font-size: 62px;
+
+    font-weight: bold;
+
+    color: white;
+
+    margin: 5px;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,0.18);
+}
+
+#condition {
+    font-size: 21px;
+
+    color: rgba(255,255,255,0.95);
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   WEATHER ADVICE
+========================= */
+
+.smart-message {
+    margin: 25px 0;
+
+    padding: 22px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.22);
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    backdrop-filter: blur(10px);
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(0,80,130,0.10);
+}
+
+.smart-message h3 {
+    margin-bottom: 10px;
+
+    font-size: 20px;
+}
+
+.smart-message p {
+    font-size: 16px;
+}
+
+
+/* =========================
+   WEATHER INFO
+========================= */
+
+.weather-info {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin-top: 25px;
+}
+
+.info-card {
+    padding: 22px 12px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.24);
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    backdrop-filter: blur(10px);
+
+    color: white;
+
+    transition: 0.25s;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+
+    background: rgba(255,255,255,0.30);
+}
+
+.info-card span {
+    font-size: 28px;
+}
+
+.info-card p {
+    margin: 9px 0;
+
+    color: rgba(255,255,255,0.9);
+
+    font-size: 15px;
+}
+
+.info-card strong {
+    font-size: 21px;
+
+    color: white;
+}
+
+
+/* =========================
+   MOBILE DESIGN
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 15px;
+        align-items: flex-start;
+    }
+
+    .container {
+        width: 100%;
+
+        padding: 25px 16px;
+
+        border-radius: 25px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+
+        margin-bottom: 22px;
+    }
+
+    .search-box {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+
+    #cityName {
+        font-size: 25px;
+    }
+
+    #weatherIcon {
+        width: 85px;
+    }
+
+    #temperature {
+        font-size: 52px;
+    }
+
+    #condition {
+        font-size: 18px;
+    }
+
+    .weather-info {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+    .info-card {
+        padding: 18px 8px;
+    }
+
+    .info-card strong {
+        font-size: 18px;
+    }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+    .container {
+        padding: 20px 12px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #temperature {
+        font-size: 46px;
+    }
+
+    .weather-info {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* =================================
+   WEATHER SCENE BACKGROUND
+================================= */
+
+.weather-background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #55b9eb 0%,
+            #78ccef 48%,
+            #9bd9df 100%
+        );
+
+    transition: background 1s ease;
+}
+
+
+/* =================================
+   SUN
+================================= */
+
+.sun {
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    top: 8%;
+    right: 12%;
+
+    border-radius: 50%;
+
+    background: #fff3a6;
+
+    box-shadow:
+        0 0 30px #fff3a6,
+        0 0 70px rgba(255,235,120,0.7);
+
+    opacity: 0;
+
+    transition: 1s;
+}
+
+
+/* =================================
+   CLOUDS
+================================= */
+
+.cloud {
+    position: absolute;
+
+    width: 170px;
+    height: 55px;
+
+    background: rgba(255,255,255,0.95);
+
+    border-radius: 50px;
+
+    filter: blur(1px);
+
+    box-shadow:
+        0 8px 18px rgba(255,255,255,0.35);
+}
+
+
+/* cloud bumps */
+
+.cloud::before,
+.cloud::after {
+    content: "";
+
+    position: absolute;
+
+    background: white;
+
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 75px;
+    height: 75px;
+
+    left: 25px;
+    bottom: 15px;
+}
+
+.cloud::after {
+    width: 90px;
+    height: 90px;
+
+    right: 25px;
+    bottom: 10px;
+}
+
+
+/* cloud positions */
+
+.cloud1 {
+    top: 12%;
+    left: 8%;
+
+    transform: scale(1.1);
+
+    animation: moveCloud 35s linear infinite;
+}
+
+.cloud2 {
+    top: 25%;
+    left: 55%;
+
+    transform: scale(0.75);
+
+    opacity: 0.8;
+
+    animation: moveCloud 45s linear infinite reverse;
+}
+
+.cloud3 {
+    top: 8%;
+    left: 70%;
+
+    transform: scale(0.6);
+
+    opacity: 0.7;
+
+    animation: moveCloud 50s linear infinite;
+}
+
+
+@keyframes moveCloud {
+
+    from {
+        transform: translateX(-100px);
+    }
+
+    to {
+        transform: translateX(100px);
+    }
+}
+
+
+/* =================================
+   MOUNTAINS
+================================= */
+
+.mountains {
+    position: absolute;
+
+    bottom: 80px;
+    left: 0;
+
+    width: 100%;
+    height: 180px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            transparent 48%,
+            #69aeb9 49%,
+            #69aeb9 65%,
+            transparent 66%
+        ),
+
+        linear-gradient(
+            225deg,
+            transparent 48%,
+            #559aaa 49%,
+            #559aaa 65%,
+            transparent 66%
+        );
+
+    opacity: 0.7;
+}
+
+
+/* =================================
+   GREEN LAND
+================================= */
+
+.grass {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 130px;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            #65b96c 0%,
+            #3c9a5a 70%
+        );
+
+    border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+
+    box-shadow:
+        inset 0 15px 25px rgba(255,255,255,0.15);
+}
+
+.person {
+    position: absolute;
+
+    right: 6%;
+    bottom: 35px;
+
+    width: 125px;
+    height: 280px;
+
+    z-index: 3;
+
+    transform: scale(0.95);
+
+    filter: drop-shadow(8px 12px 8px rgba(0,0,0,0.18));
+}
+
+
+/* =====================
+   HEAD
+   ===================== */
+
+.person-head {
+    position: absolute;
+
+    width: 48px;
+    height: 55px;
+
+    top: 5px;
+    left: 38px;
+
+    background: #d99a6c;
+
+    border-radius:
+        45% 50% 45% 50%;
+
+    transform: rotate(-5deg);
+}
+
+
+/* =====================
+   CAP
+   ===================== */
+
+.person-cap {
+    position: absolute;
+
+    width: 52px;
+    height: 28px;
+
+    top: -2px;
+    left: 31px;
+
+    background: #244f70;
+
+    border-radius:
+        50% 55% 30% 30%;
+
+    transform: rotate(-8deg);
+
+    z-index: 2;
+}
+
+/* cap visor */
+
+.person-cap::after {
+    content: "";
+
+    position: absolute;
+
+    width: 30px;
+    height: 10px;
+
+    background: #1c405c;
+
+    left: 30px;
+    top: 17px;
+
+    border-radius: 50%;
+
+    transform: rotate(8deg);
+}
+
+
+/* =====================
+   NECK
+   ===================== */
+
+.person-neck {
+    position: absolute;
+
+    width: 19px;
+    height: 25px;
+
+    top: 50px;
+    left: 52px;
+
+    background: #d99a6c;
+
+    border-radius: 5px;
+}
+
+
+/* =====================
+   SHIRT
+   ===================== */
+
+.person-shirt {
+    position: absolute;
+
+    width: 70px;
+    height: 105px;
+
+    top: 65px;
+    left: 28px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #e7b85e,
+            #f1cc78
+        );
+
+    border-radius:
+        22px 22px 15px 15px;
+
+    transform: rotate(-3deg);
+
+    z-index: 2;
+}
+
+
+/* shirt bottom */
+
+.person-shirt::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: 7px;
+
+    width: 56px;
+    height: 12px;
+
+    background: rgba(210,160,65,0.35);
+
+    border-radius: 50%;
+}
+
+
+/* =====================
+   ARMS
+   ===================== */
+
+.person-arm {
+    position: absolute;
+
+    width: 18px;
+    height: 92px;
+
+    background: #d99a6c;
+
+    border-radius: 15px;
+
+    top: 72px;
+
+    z-index: 1;
+}
+
+
+/* back arm */
+
+.person-arm-back {
+    left: 20px;
+
+    transform:
+        rotate(18deg);
+}
+
+
+/* front arm */
+
+.person-arm-front {
+    left: 84px;
+
+    transform:
+        rotate(-8deg);
+}
+
+
+/* hands */
+
+.person-arm::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 20px;
+
+    bottom: -8px;
+    left: 0;
+
+    background: #d99a6c;
+
+    border-radius: 50%;
+}
+
+
+/* =====================
+   SHORTS
+   ===================== */
+
+.person-shorts {
+    position: absolute;
+
+    width: 67px;
+    height: 65px;
+
+    top: 158px;
+    left: 30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4383a0,
+            #5598b2
+        );
+
+    border-radius:
+        8px 8px 15px 15px;
+
+    z-index: 2;
+}
+
+
+/* =====================
+   LEGS
+   ===================== */
+
+.person-leg {
+    position: absolute;
+
+    width: 18px;
+    height: 82px;
+
+    top: 208px;
+
+    background: #d99a6c;
+
+    border-radius: 12px;
+
+    z-index: 1;
+}
+
+
+/* left leg */
+
+.person-leg-left {
+    left: 35px;
+
+    transform:
+        rotate(7deg);
+}
+
+
+/* right leg */
+
+.person-leg-right {
+    left: 69px;
+
+    transform:
+        rotate(-5deg);
+}
+
+
+/* =====================
+   SHOES
+   ===================== */
+
+.person-shoe {
+    position: absolute;
+
+    width: 35px;
+    height: 15px;
+
+    top: 273px;
+
+    background: #263c4b;
+
+    border-radius:
+        50% 60% 35% 30%;
+
+    z-index: 2;
+}
+
+
+/* left shoe */
+
+.person-shoe-left {
+    left: 20px;
+
+    transform: rotate(8deg);
+}
+
+
+/* right shoe */
+
+.person-shoe-right {
+    left: 65px;
+
+    transform: rotate(-5deg);
+}
